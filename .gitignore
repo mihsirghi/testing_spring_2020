@@ -25,6 +25,9 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
+target
+pom.xml~
+
 
 ### Log files ###
 *.log
