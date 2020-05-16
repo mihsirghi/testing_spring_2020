@@ -6,9 +6,10 @@ Andrei , Adrian, Mihaela, Svetlana
 ## Rules ##
 THIS IS A WORK IN PROGRESS, THE BUILD IS KINDA STABLE, PLEASE DON'T CHANGE ANYTHING ALREADY EXISTING PACKAGES IT MY BREAK IT.
 
-When you need to add features or make changes , extend the needed class, and overwrite  the needed function or add new etc:
-when naming the extended classes use it's original name + your last name , if you find mistakes in the framework tell the rest of us before "fixing" them.
-push only files you changed, please edit your .gitignore file to ignore all your temporal\personal packages. 
+When you need to add features extend the needed class, and overwrite  the needed function or add new etc, if you 
+need to make changes in framework itself add the rest of the team for review. When naming the extended classes use 
+it's original name + your last name.
+Commits - push only files you changed, please edit your .gitignore file to ignore all your temporal\personal packages. 
 
 ## Installation ##
 
@@ -21,4 +22,6 @@ in future firefox will be added
 
 ## Version ##
 
-Current version 01.00, made on 04.05.2020
+Updates : PageObject added, template test added . 
+
+Current version 02.00, made on 07.05.2020
