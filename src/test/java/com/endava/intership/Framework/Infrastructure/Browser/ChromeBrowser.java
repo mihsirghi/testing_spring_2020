@@ -11,7 +11,6 @@ public class ChromeBrowser {
        ChromeOptions chromeOptions = new ChromeOptions();
        chromeOptions.addArguments("['start-maximized']");
        System.setProperty("webdriver.chrome.driver", Resource.getResourcePath( "driver\\chromedriver.exe" ));
-
        return new ChromeDriver(chromeOptions);
    }
 }
