@@ -6,11 +6,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ChromeBrowser {
-   public static WebDriver getChromeDriver(){
+    Resource resource= new Resource();
+   public WebDriver getChromeDriver(){
 
        ChromeOptions chromeOptions = new ChromeOptions();
        chromeOptions.addArguments("['start-maximized']");
-       System.setProperty("webdriver.chrome.driver", Resource.getResourcePath( "driver\\chromedriver.exe" ));
+       System.setProperty("webdriver.chrome.driver", resource.getResourcePath( "driver\\chromedriver.exe" ));
        return new ChromeDriver(chromeOptions);
    }
 }

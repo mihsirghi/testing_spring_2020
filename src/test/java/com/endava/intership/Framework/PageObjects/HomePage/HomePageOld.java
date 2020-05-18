@@ -82,15 +82,16 @@ public class HomePageOld extends DefaultPage {
 
     @FindBy(xpath = "/html/body/div[2]/div/div/div[3]/button[1]")
     private WebElement closeFromSignUpMenuBtn;
+    Setup setup=new Setup();
 
     public HomePageOld(){
-        WebDriver driver = Setup.driver;
+        WebDriver driver = setup.driver;
         PageFactory.initElements( driver, this );
     }
 
     void goToHomePage(){
-        Setup.driver.get( HomePageUrl );
-        Wait wait = new Wait( Setup.driver );
+        setup.driver.get( HomePageUrl );
+        Wait wait = new Wait( setup.driver );
         wait.forLoading(5);
     }
 

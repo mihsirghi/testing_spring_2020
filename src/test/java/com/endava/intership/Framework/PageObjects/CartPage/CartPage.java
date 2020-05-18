@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public class CartPage extends DefaultPage {
     //Page Url
     private static final String cartPageUrl = "https://www.demoblaze.com/cart.html";
+    Setup setup= new Setup();
 
     //Page elements
     @FindBy(xpath = "/html/body/nav/div/div/ul/li[2]/a")
@@ -38,13 +39,13 @@ public class CartPage extends DefaultPage {
     private WebElement placeOrderBtn;
 
     public CartPage(){
-        WebDriver driver = Setup.driver;
+        WebDriver driver = setup.driver;
         PageFactory.initElements( driver, this );
     }
 
-    void goCartPage(){
-        Setup.driver.get( cartPageUrl );
-        Wait wait = new Wait( Setup.driver );
+    public void goCartPage(){
+        setup.driver.get( cartPageUrl );
+        Wait wait = new Wait( setup.driver );
         wait.forLoading(5);
     }
 
