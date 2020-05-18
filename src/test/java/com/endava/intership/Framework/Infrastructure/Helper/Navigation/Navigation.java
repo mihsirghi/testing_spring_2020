@@ -6,22 +6,21 @@ import com.endava.intership.Framework.Infrastructure.Driver.Setup;
 import java.net.URL;
 
 public class Navigation {
-    Setup setup=new Setup();
-    public void navigateTo(String url) {
-        setup.driver.get( url );
+    public static void navigateTo(String url) {
+        Setup.driver.get( url );
     }
 
-    public void navigateTo(URL url) {
-        setup.driver.get(url.getPath());
+    public static void navigateTo(URL url) {
+        Setup.driver.get(url.getPath());
     }
 
-    public String getTitle() {
+    public static String getTitle() {
 
-        return setup.driver.getTitle();
+        return Setup.driver.getTitle();
     }
 
-    public String getCurrentUrl() {
+    public static String getCurrentUrl() {
 
-        return setup.driver.getCurrentUrl();
+        return Setup.driver.getCurrentUrl();
     }
 }

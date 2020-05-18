@@ -5,14 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DateTime {
-    public String getCurrentDateTime() {
+    public static String getCurrentDateTime() {
 
         DateFormat dateFormat = new SimpleDateFormat("_yyyy-MM-dd_HH-mm-ss");
         Calendar cal = Calendar.getInstance();
         return "" + dateFormat.format(cal.getTime());
     }
 
-    public String getCurrentDate() {
+    public static String getCurrentDate() {
         return getCurrentDateTime().substring(0, 11);
     }
 

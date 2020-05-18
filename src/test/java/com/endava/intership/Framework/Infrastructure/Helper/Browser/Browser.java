@@ -10,59 +10,58 @@ import java.util.Set;
 public class Browser {
 
     //public static final Logger log = LoggerHelper.getLogger(BrowserHelper.class);
-    Setup setup=new Setup();
 
-    public void browserMaximize() {
-        WebDriver driver = setup.driver;
+    public static void browserMaximize() {
+        WebDriver driver = Setup.driver;
         driver.manage().window().maximize();
         //log.info("");
     }
 
-    public void goBack() {
-        WebDriver driver = setup.driver;
+    public static void goBack() {
+        WebDriver driver = Setup.driver;
         driver.navigate().back();
         // log.info("");
     }
 
-    public void goForward() {
-        WebDriver driver = setup.driver;
+    public static void goForward() {
+        WebDriver driver = Setup.driver;
         driver.navigate().forward();
         //log.info("");
     }
 
-    public void refresh() {
-        WebDriver driver = setup.driver;
+    public static void refresh() {
+        WebDriver driver = Setup.driver;
         driver.navigate().refresh();
         //log.info("");
     }
 
-    public Set<String> getWindowHandlens() {
+    public static Set<String> getWindowHandlens() {
         // log.debug("");
-        return setup.driver.getWindowHandles();
+        return Setup.driver.getWindowHandles();
     }
 
-    public void SwitchToWindow(int index) {
+    public static void SwitchToWindow(int index) {
 
         LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
 
         if( index < 0 || index > windowsId.size())
             throw new IllegalArgumentException("Invalid Index : " + index);
 
-        setup.driver.switchTo().window(windowsId.get(index));
+        Setup.driver.switchTo().window(windowsId.get(index));
         //log.info("Index : " + index);
     }
 
-    public void switchToParentWindow() {
+    public static void switchToParentWindow() {
         LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
-        setup.driver.switchTo().window(windowsId.get(0));
+        Setup.driver.switchTo().window(windowsId.get(0));
         //log.info("");
     }
 
-    public void switchToParentWithChildClose() {
+    public static void switchToParentWithChildClose() {
         switchToParentWindow();
 
         LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
-        WebDriver driver = setup.driver;
+        WebDriver driver = Setup.driver;
 
         for(int i = 1; i < windowsId.size(); i++){
             driver.switchTo().window(windowsId.get(i));

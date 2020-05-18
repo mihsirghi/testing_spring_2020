@@ -9,10 +9,9 @@ import org.openqa.selenium.WebDriver;
 public class TearDown {
 
     private WebDriver driver;
-    Setup setup=new Setup();
 
     public TearDown() {
-        this.driver = setup.driver;
+        this.driver = Setup.driver;
     }
 
     @After

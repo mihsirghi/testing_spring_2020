@@ -5,11 +5,12 @@ import com.endava.intership.Framework.Infrastructure.Browser.FirefoxBrowser;
 import com.endava.intership.Framework.Infrastructure.Helper.Browser.BrowserType;
 import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Setup {
-    public WebDriver driver;
-    ChromeBrowser chromeBrowser=new ChromeBrowser();
-    FirefoxBrowser firefoxBrowser= new FirefoxBrowser();
+    public static WebDriver driver;
 
     @Before
     public void setWebDriver() throws Exception {
@@ -23,11 +24,11 @@ public class Setup {
 
         switch (browser) {
             case "chrome":
-                driver = chromeBrowser.getChromeDriver();
+                driver = ChromeBrowser.getChromeDriver();
                 break;
 
             case "firefox":
-                driver = firefoxBrowser.getFirefoxDriver();
+                driver = FirefoxBrowser.getFirefoxDriver();
                 break;
 
             default:
