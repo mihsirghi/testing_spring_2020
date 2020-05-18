@@ -3,16 +3,13 @@ package com.endava.intership.Framework.PageObjects.HomePage;
 import com.endava.intership.Framework.Infrastructure.Driver.Setup;
 import com.endava.intership.Framework.Infrastructure.Driver.Wait;
 import com.endava.intership.Framework.Infrastructure.Helper.Navigation.Navigation;
-import com.endava.intership.Framework.PageObjects.DefaultPage.DefaultSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 
-
-public class HomePageSteps {
-
-    private DefaultSteps defaultSteps;
-
+public class DefaultStepsHome {
 
     private final HomePage homePage = new HomePage();
     private final Wait wait = new Wait( Setup.driver );
@@ -39,13 +36,12 @@ public class HomePageSteps {
 
     @And("{string} is entered")
     public void isEntered(String mail) throws InterruptedException {
-
         this.wait.forElementToBeDisplayed( 10, homePage.getLoginMailInput(), mail );
         this.homePage.getLoginMailInput().sendKeys( mail );
     }
 
     @And("{string} are entered")
-    public void inputEntered(String password) {
+    public void areEntered(String password) {
         this.homePage.getLoginPasswordInput().sendKeys( password );
     }
 

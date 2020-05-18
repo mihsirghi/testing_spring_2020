@@ -1,6 +1,5 @@
 package com.endava.intership.Framework.TestCycle.Test;
 
-
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -11,8 +10,8 @@ import org.junit.runner.RunWith;
         "json:target/cucumber_json_reports/home-page.json",
         "html:target/home-page-html"},
         glue = {"com.endava.intership.Framework.Infrastructure.Driver",
-                "com.endava.intership.Framework.PageObjects"} )
+                "com.endava.intership.Framework.PageObjects.HomePage"} )
 
-    public class ClickingXCartTest  {
+    public class ClickingXCartTest {
 
 }
