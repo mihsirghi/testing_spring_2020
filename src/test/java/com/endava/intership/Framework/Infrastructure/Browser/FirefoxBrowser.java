@@ -10,4 +10,3 @@ public class FirefoxBrowser {
         return new FirefoxDriver();
     }
 }
-//FirefoxDriver(FirefoxOptions options)
