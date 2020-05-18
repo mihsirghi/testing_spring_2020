@@ -3,25 +3,28 @@ package com.endava.intership.Framework.PageObjects.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebElement;
 
 public class HomePageSteps {
-    private final HomePage homePage = new HomePage();
+    private final HomePageOld homePageOld = new HomePageOld();
 
     @Given( "^A user navigates to HomePage" )
-    public void aUserNavigatesToHomePage(){ this.homePage.goToHomePage();}
+    public void aUserNavigatesToHomePage(){ this.homePageOld.goToHomePage();}
 
     @Then( "^Page title is \"([^\"]*)\"$" )
-    public void pageTitle(String title){this.homePage.checkTitle( title );}
+    public void pageTitle(String title){this.homePageOld.checkTitle( title );}
 
     @Then( "^The cart button is clicked" )
-    public void theCartButtonIsClicked(){homePage.getCartBtn().click();}
+    public void theCartButtonIsClicked(){
+        homePageOld.getCartBtn().click();}
 
     @Then("^Home button is clicked")
-    public void homeButtonIsClicked(){homePage.getHomePageBtn().click();}
+    public void homeButtonIsClicked(){
+        homePageOld.getHomePageBtn().click();}
 
     @And("^The title is")
     public void theTitleIsString() {
-        homePage.checkTitle( "STORE" );
+        homePageOld.checkTitle( "STORE" );
     }
+
+
 }

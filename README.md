@@ -23,5 +23,3 @@ in future firefox will be added
 ## Version ##
 
 Updates : PageObject added, template test added . 
-
-Current version 02.00, made on 07.05.2020
