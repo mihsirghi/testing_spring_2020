@@ -1,17 +1,23 @@
-package com.endava.intership.Framework.PageObjects.HomePage;
+package com.endava.intership.Framework.PageObjects.ComingSoonPage;
 
 import com.endava.intership.Framework.Infrastructure.Driver.Setup;
 import com.endava.intership.Framework.PageObjects.DefaultPage.DefaultPage;
-import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends DefaultPage {
+public class ComingSoonPage  extends DefaultPage {
 
-    public HomePage(){
+    @FindBy(className = "grid icon-gridview")
+    private WebElement gridElementBtn;
+
+    public ComingSoonPage(){
         WebDriver driver = Setup.driver;
         PageFactory.initElements( driver, this );
+    }
+
+    public WebElement getGridElementBtn() {
+        return gridElementBtn;
     }
 }
