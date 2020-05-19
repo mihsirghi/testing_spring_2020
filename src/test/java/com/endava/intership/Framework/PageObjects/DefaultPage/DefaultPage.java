@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.net.URL;
 
-public abstract class DefaultPage {
+public class DefaultPage {
 
     protected WebDriver driver;
     protected Wait wait;
@@ -24,7 +24,6 @@ public abstract class DefaultPage {
         String displayedTitle = driver.getTitle();
         Assert.assertEquals( "Displayed title is " + displayedTitle + " instead of " + title, title, displayedTitle );
     }
-
 
     //Navigation elements
     @FindBy(linkText = "Home")
