@@ -9,6 +9,12 @@ Feature: Home button
     And "<mail>" is entered
     And "<password>" are entered
 
+
     Examples:
       | mail | password |
       | test@mail.com | teststuff |
+
+    @test2
+    Scenario: generic step
+      Given User is on homepage
+      And User Clicks "Home" on Navigation Bar

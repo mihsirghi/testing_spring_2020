@@ -66,5 +66,18 @@
         <artifactId>selenium-java</artifactId>
         <version>3.141.59</version>
     </dependency>
+    <dependency>
+        <groupId>com.ibm.icu</groupId>
+        <artifactId>icu4j</artifactId>
+        <version>58.1</version>
+        <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
+    <dependency>
+        <groupId>info.cukes</groupId>
+        <artifactId>cucumber-picocontainer</artifactId>
+        <version>1.2.4</version>
+        <scope>test</scope>
+    </dependency>
 </dependencies>
 </project>
