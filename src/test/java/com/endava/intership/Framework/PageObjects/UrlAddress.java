@@ -1,6 +1,7 @@
 package com.endava.intership.Framework.PageObjects;
 
 public class UrlAddress {
+
     //Hardcoded strings, to be changed in future
     public final String homePage = "https://demostore.x-cart.com/";
     public final String saleProductsPage = "https://demostore.x-cart.com/sale-products/";
