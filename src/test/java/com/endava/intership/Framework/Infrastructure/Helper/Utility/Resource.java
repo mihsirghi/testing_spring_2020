@@ -1,12 +1,18 @@
 package com.endava.intership.Framework.Infrastructure.Helper.Utility;
 
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
+
 public class Resource {
 
     public static String getResourcePath(String resource) {
-        return getBaseResourcePath() + resource;
-    }
-
-    public static String getBaseResourcePath() {
-        return Class.class.getResource("/").getPath();
+        URL url = Resource.class.getResource("/" + resource);
+        try {
+            return Paths.get(url.toURI()).toFile().getAbsolutePath();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
