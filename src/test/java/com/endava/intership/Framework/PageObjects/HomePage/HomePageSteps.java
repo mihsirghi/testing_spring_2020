@@ -11,9 +11,6 @@ import io.cucumber.java.en.Then;
 
 public class HomePageSteps {
 
-    private DefaultSteps defaultSteps;
-
-
     private final HomePage homePage = new HomePage();
     private final Wait wait = new Wait( Setup.driver );
 

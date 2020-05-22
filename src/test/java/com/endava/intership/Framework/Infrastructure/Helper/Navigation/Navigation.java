@@ -6,11 +6,14 @@ import com.endava.intership.Framework.Infrastructure.Driver.Setup;
 import java.net.URL;
 
 public class Navigation {
+
     public static void navigateTo(String url) {
+
         Setup.driver.get( url );
     }
 
     public static void navigateTo(URL url) {
+
         Setup.driver.get(url.getPath());
     }
 

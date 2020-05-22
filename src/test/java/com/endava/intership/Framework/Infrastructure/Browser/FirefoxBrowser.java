@@ -9,4 +9,5 @@ public class FirefoxBrowser {
         System.setProperty( "webdriver.gecko.driver", Resource.getResourcePath( "driver\\geckodriver.exe" )  );
         return new FirefoxDriver();
     }
+
 }

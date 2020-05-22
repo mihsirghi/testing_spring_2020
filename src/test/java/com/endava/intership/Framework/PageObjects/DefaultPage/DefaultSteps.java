@@ -1,6 +1,6 @@
 package com.endava.intership.Framework.PageObjects.DefaultPage;
 
-import com.endava.intership.Framework.Infrastructure.Helper.Navigation.Button;
+import com.endava.intership.Framework.Infrastructure.Helper.Navigation.Click;
 import com.endava.intership.Framework.Infrastructure.Helper.Utility.Generics;
 import io.cucumber.java.en.And;
 import org.openqa.selenium.By;
@@ -13,9 +13,9 @@ public class DefaultSteps {
 
     @And("User Clicks {string} on Navigation Bar")
     public void navigationBarClick (String button) {
-        if ( Generics.isElementPresent( By.linkText( button ) ) ) {
-            Button.clickButton( By.linkText( button ) );
-        } else throw new InputMismatchException( "No such element" );
+       if(Generics.isElementPresent( By.partialLinkText( button )  ) ) {
+            Click.clickGeneric( By.partialLinkText( button ) );
+        }
+        else throw new InputMismatchException( "No such element found;" );
     }
-
 }

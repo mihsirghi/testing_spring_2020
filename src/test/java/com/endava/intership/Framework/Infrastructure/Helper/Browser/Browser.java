@@ -26,4 +26,5 @@ public class Browser {
         WebDriver driver = Setup.driver;
         driver.navigate().refresh();
     }
+
 }

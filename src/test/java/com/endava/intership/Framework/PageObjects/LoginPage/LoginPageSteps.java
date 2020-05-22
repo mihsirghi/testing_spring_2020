@@ -3,61 +3,103 @@ package com.endava.intership.Framework.PageObjects.LoginPage;
 import com.endava.intership.Framework.Infrastructure.Driver.Setup;
 import com.endava.intership.Framework.Infrastructure.Driver.Wait;
 import com.endava.intership.Framework.Infrastructure.Helper.Navigation.Navigation;
-import com.endava.intership.Framework.Infrastructure.Helper.Utility.JsonReader;
-import com.endava.intership.Framework.Infrastructure.Helper.Utility.Resource;
-import com.endava.intership.Framework.Infrastructure.Helper.Utility.User;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.google.common.collect.ClassToInstanceMap;
+import com.endava.intership.Framework.Infrastructure.Helper.Utility.GenericData;
+import com.endava.intership.Framework.PageObjects.UrlAddress;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.interactions.Actions;
 
 import java.io.IOException;
 
 public class LoginPageSteps {
     private final LoginPage loginPage = new LoginPage();
     private final Wait wait = new Wait(Setup.driver);
-    private ClassToInstanceMap<Object> FileReaderManager;
+    JavascriptExecutor scroll = (JavascriptExecutor) Setup.driver;
+    Actions actions = new Actions(Setup.driver);
+    GenericData genericData = new GenericData(loginPage);
 
     @Given("User is on homepage")
-    public void userAccessPage() {
-        Navigation.navigateTo("https://demostore.x-cart.com/");
+    public void userIsOnHomePage() {
+        Navigation.navigateTo(UrlAddress.homePage);
     }
 
     @When("User clicks on Login button")
-    public void userClicksLoginButton() {
-        new WebDriverWait(Setup.driver, 20).until(ExpectedConditions.elementToBeClickable(loginPage.getLoginButton())).click();
+    public void userClicksSignInButton() {
+        loginPage.getSignInButton();
     }
 
-    @Then("Button is clicked")
-    public void buttonIsClicked() {
+    @When("User enters {string} data in {string} field on {string} page")
+    public void userFillsField(String input, String field, String page) throws IOException {
+        genericData.enterTestData(input, field, page);
     }
 
-    @When("User fills Email field")
-    public void userFillsEmailFieldWithEmail() throws IOException {
-        wait.forElementToBeDisplayed(5, loginPage.getEmailField(), "email");
-        User[] users = JsonReader.fromJSON(new TypeReference<User[]>() {}, Resource.getResourcePath( "testdata\\users.json" ));
-        loginPage.getEmailField().sendKeys(users[0].login);
+    @When("User clicks on the preferences menu button after scroll")
+    public void userClicksOnLoginButtonAfterScroll() {
+        JavascriptExecutor scroll = (JavascriptExecutor) Setup.driver;
+        scroll.executeScript("window.scrollBy(0,1000)");
+        loginPage.getPreferencesMenuButtton();
     }
 
-    @And("User fills Password field")
-    public void userFillsPasswordFieldWithPassword() throws IOException {
-        User[] users = JsonReader.fromJSON(new TypeReference<User[]>() {}, Resource.getResourcePath( "testdata\\users.json" ));
-        loginPage.getPasswordField().sendKeys(users[0].password);
+    @When("User clicks on {string} button from preferences menu")
+    public void userClicksOnButtonFromPreferencesMenu(String arg0) {
+        loginPage.getSignInBtnFromPreferencesMenuBtn().click();
     }
 
-    @And("User clicks on Sign In button")
-    public void userClicksOnSignInButton() {
+    @When("User clicks on add {string}")
+    public void userClicksOnAdd(String arg0) {
+        scroll.executeScript("window.scrollBy(0,750)");
+        actions.moveToElement(loginPage.getProduct()).build().perform();
+        actions.moveToElement(loginPage.getAddBtn()).build().perform();
+        loginPage.getAddBtn().click();
+    }
+
+    @When("{string} button is clicked by user")
+    public void checkootButtonIsClick(String arg0) {
+        loginPage.getCheckoutBtn().click();
+    }
+
+    @And("User enters {string} data in {string} field in {string} page")
+    public void userEntersDataInFieldOnPage(String input, String field, String page) throws IOException {
+        genericData.enterTestData(input, field, page);
+    }
+
+    @And("{string} button is clicked")
+    public void userClicksOnSignInButton(String element) {
         wait.forLoading(7);
         loginPage.getSignInBtn().click();
+    }
+
+    @Then("{string} is displayed")
+    public void popUpisDisplayed(String element) {
+        loginPage.getPopUp();
     }
 
     @Then("User is logged in")
     public void userIsLoggedIn() {
         wait.forLoading(10);
-        Setup.driver.getCurrentUrl().contains("My account");
+        Setup.driver.getPageSource().contains("My account");
+    }
+
+    @Then("the error message is displayed")
+    public void theErrorMessageIsDisplayed() {
+        loginPage.errorMessageDisplayed();
+    }
+
+    @Then("{string} is expanded")
+    public void preferencesMenuDisplayed(String arg0) {
+        loginPage.preferencesMenuDisplayed();
+    }
+
+    @Then("{string} with {string} button is displayed")
+    public void popUpWithCheckoutButtonIsDisplay(String arg0, String arg1) {
+        loginPage.checkoutBtn();
+    }
+
+    @Then("{string} form is displayed")
+    public void formIsDisplayeddd(String arg0) {
+        Setup.driver.getCurrentUrl().contains("Log in to your account");
     }
 }
