@@ -3,24 +3,29 @@ package com.endava.intership.Framework.PageObjects.CreateAccount;
 import com.endava.intership.Framework.Infrastructure.Driver.Setup;
 import com.endava.intership.Framework.Infrastructure.Driver.Wait;
 import com.endava.intership.Framework.PageObjects.DefaultPage.DefaultPage;
-import org.openqa.selenium.Dimension;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreateAccount extends DefaultPage {
     public CreateAccount() {
         this.driver = Setup.driver;
-        this.driver.manage().window().setSize(new Dimension(1024, 768));
+        this.driver.manage().window();
         this.wait = new Wait(this.driver);
     }
 
     @FindBy(xpath = "//*[@id='header-bar']/div[3]/button/span")
     private WebElement signInButton;
 
+    @FindBy(css = "div.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.default-dialog.has-title")
+    private WebElement popUp;
+
     @FindBy(css = "a.popup-button.default-popup-button.create-account-link")
     private WebElement createAccountButton;
 
-    @FindBy(id = "login")
+    @FindBy(css = "#login")
     private WebElement emailField;
 
     @FindBy(id = "password")
@@ -29,11 +34,10 @@ public class CreateAccount extends DefaultPage {
     @FindBy(id = "password-conf")
     private WebElement confirmPasswordField;
 
-    @FindBy(xpath = "//*[@id='form-1589902049063']/div[2]/div[2]/div/button")
+    @FindBy(css = "div.model-form-buttons > div > button")
     private WebElement createButton;
 
-    // @FindBy(id = "status-messages")
-    @FindBy(linkText = "The data has been saved successfully")
+    @FindBy(css = "li.info")
     private WebElement warningMessage;
 
     @FindBy(xpath = "//*[@id='header-bar']/div[3]/a")
@@ -42,11 +46,26 @@ public class CreateAccount extends DefaultPage {
     @FindBy(xpath = "//*[@id='header-bar']/div[3]/button/span")
     private WebElement loginButton;
 
-    public WebElement getSignInButton() {
-        return signInButton;
+    @FindBy(css = "li.error")
+    private WebElement errorMessage;
+
+    @FindBy(css = "p.error")
+    private WebElement emailErrorMessage;
+
+    @FindBy(xpath = "//*[@id='header']/div[2]/a")
+    private WebElement preferencesMenuButtton;
+
+    @FindBy(css = "div.header_settings.dropdown.open > div > ul.sign-in_block > li > button")
+    private WebElement signInButtonFrompreferencesMenuBottton;
+
+    @FindBy(css = "#status-messages > a")
+    private WebElement closeErrorMessage;
+
+    public void getSignInBtn() {
+        new WebDriverWait(Setup.driver, 5).until(ExpectedConditions.elementToBeClickable(signInButton)).click();
     }
 
-    public WebElement getCreateAccountButton() {
+    public WebElement getCreateAccountBtn() {
         return createAccountButton;
     }
 
@@ -62,20 +81,39 @@ public class CreateAccount extends DefaultPage {
         return confirmPasswordField;
     }
 
-    public WebElement getCreateButton() {
+    public WebElement getCreateBtn() {
         return createButton;
     }
 
-    public String getWarningMessage() {
-        return warningMessage.toString();
+    public void getWarningMessage() {
+        new WebDriverWait(Setup.driver, 5).until(ExpectedConditions.visibilityOf(warningMessage));
     }
 
-    public WebElement getSignInDropDown() {
-        return signInDropDown;
+    public void getPopUp() {
+        new WebDriverWait(Setup.driver, 5).until(ExpectedConditions.visibilityOf(popUp));
     }
 
-    public WebElement getLoginButton() {
-        return loginButton;
+    public void getErrorMessage() {
+        new WebDriverWait(Setup.driver, 5).until(ExpectedConditions.visibilityOf(errorMessage));
     }
 
+    public void getEmailErrorMessage() {
+        new WebDriverWait(Setup.driver, 5).until(ExpectedConditions.visibilityOf(emailErrorMessage));
+    }
+
+    public WebElement getPreferencesMenuButtton() {
+        return preferencesMenuButtton;
+    }
+
+    public WebElement getSignInBtnFrompreferencesMenuBottton() {
+        return signInButtonFrompreferencesMenuBottton;
+    }
+
+    public WebElement getCloseErrorMessage() {
+        return closeErrorMessage;
+    }
+
+    public void menuIsDisplayed() {
+        new WebDriverWait(Setup.driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.header_settings.dropdown.open > div")));
+    }
 }

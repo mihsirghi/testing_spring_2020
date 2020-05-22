@@ -1,6 +1,16 @@
 [
   {
-    "email": "test244444@test.com",
+    "email": "test233@test.com",
+    "password": "test20",
+    "confirmPassword": "test20"
+  },
+  {
+    "email": "test255@test.com",
+    "password": "test20",
+    "confirmPassword": "test20"
+  },
+  {
+    "email": "test266@test.com",
     "password": "test20",
     "confirmPassword": "test20"
   }

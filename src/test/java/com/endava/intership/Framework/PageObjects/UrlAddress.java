@@ -3,7 +3,7 @@ package com.endava.intership.Framework.PageObjects;
 public class UrlAddress {
 
     //Hardcoded strings, to be changed in future
-    public final String homePage = "https://demostore.x-cart.com/";
+    public static String homePage = "https://demostore.x-cart.com/";
     public final String saleProductsPage = "https://demostore.x-cart.com/sale-products/";
     public final String bestsellersPage = "https://demostore.x-cart.com/bestsellers/";
     public final String shippingPage = "https://demostore.x-cart.com/shipping";
