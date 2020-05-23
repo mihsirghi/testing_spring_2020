@@ -5,6 +5,7 @@ import com.endava.intership.Framework.PageObjects.LoginPage.LoginPage;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 public class GenericData {
@@ -129,17 +130,20 @@ public class GenericData {
                 throw new InputMismatchException("No such data field found;");
         }
     }
+
     public void writeEmailRegister(String input) throws IOException {
         switch (input) {
             case "valid email":
-                User[] registerValidUser = JsonReader.fromJSON(new TypeReference<User[]>() {
+                ArrayList<User> registerValidUser = JsonReader.fromJSON(new TypeReference<ArrayList<User>>() {
                 }, Resource.getResourcePath("testdata\\registerValidUser.json"));
-                createAccount.getEmailField().sendKeys(registerValidUser[0].email);
+                createAccount.getEmailField().sendKeys(registerValidUser.get(0).email);
                 break;
             case "invalid email":
-                User[] registerInvalidUser = JsonReader.fromJSON(new TypeReference<User[]>() {
+                ArrayList<User> registerInvalidUser = JsonReader.fromJSON(new TypeReference<ArrayList<User>>() {
                 }, Resource.getResourcePath("testdata\\registerInvalidUser.json"));
-                createAccount.getEmailField().sendKeys(registerInvalidUser[0].email);
+                createAccount.getEmailField().sendKeys(registerInvalidUser.get(0).email);
+                registerInvalidUser.add(registerInvalidUser.remove(0));
+                JsonReader.toJSON(registerInvalidUser, Resource.getResourcePath("testdata\\registerInvalidUser.json"));
                 break;
             default:
                 throw new InputMismatchException("No such data field found;");
@@ -149,14 +153,14 @@ public class GenericData {
     public void writePasswordRegister(String input) throws IOException {
         switch (input) {
             case "valid password":
-                User[] registerValidUser = JsonReader.fromJSON(new TypeReference<User[]>() {
+                ArrayList<User> registerValidUser = JsonReader.fromJSON(new TypeReference<ArrayList<User>>() {
                 }, Resource.getResourcePath("testdata\\registerValidUser.json"));
-                createAccount.getPasswordField().sendKeys(registerValidUser[0].password);
+                createAccount.getPasswordField().sendKeys(registerValidUser.get(0).password);
                 break;
             case "invalid password":
-                User[] registerInvalidUser = JsonReader.fromJSON(new TypeReference<User[]>() {
+                ArrayList<User> registerInvalidUser = JsonReader.fromJSON(new TypeReference<ArrayList<User>>() {
                 }, Resource.getResourcePath("testdata\\registerInvalidUser.json"));
-                createAccount.getPasswordField().sendKeys(registerInvalidUser[0].password);
+                createAccount.getPasswordField().sendKeys(registerInvalidUser.get(0).password);
                 break;
             default:
                 throw new InputMismatchException("No such data field found;");
@@ -166,14 +170,18 @@ public class GenericData {
     public void writeConfirmPasswordRegister(String input) throws IOException {
         switch (input) {
             case "valid confirm password":
-                User[] registerValidUser = JsonReader.fromJSON(new TypeReference<User[]>() {
+                ArrayList<User> registerValidUser = JsonReader.fromJSON(new TypeReference<ArrayList<User>>() {
                 }, Resource.getResourcePath("testdata\\registerValidUser.json"));
-                createAccount.getConfirmPasswordField().sendKeys(registerValidUser[0].confirmPassword);
+                createAccount.getConfirmPasswordField().sendKeys(registerValidUser.get(0).confirmPassword);
+                JsonReader.rotateJson(new TypeReference<ArrayList<User>>() {
+                }, Resource.getResourcePath("testdata\\registerValidUser.json"));
                 break;
             case "invalid confirm password":
-                User[] registerInvalidUser = JsonReader.fromJSON(new TypeReference<User[]>() {
+                ArrayList<User> registerInvalidUser = JsonReader.fromJSON(new TypeReference<ArrayList<User>>() {
                 }, Resource.getResourcePath("testdata\\registerInvalidUser.json"));
-                createAccount.getConfirmPasswordField().sendKeys(registerInvalidUser[0].confirmPassword);
+                createAccount.getConfirmPasswordField().sendKeys(registerInvalidUser.get(0).confirmPassword);
+                JsonReader.rotateJson(new TypeReference<ArrayList<User>>() {
+                }, Resource.getResourcePath("testdata\\registerInvalidUser.json"));
                 break;
             default:
                 throw new InputMismatchException("No such data field found;");

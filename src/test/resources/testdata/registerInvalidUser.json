@@ -1,7 +1,32 @@
 [
   {
-    "email": "test@@@@@test.com",
-    "password": "94!930Not45",
-    "confirmPassword": "94!930Not4534567890"
+    "email": "testcom",
+    "password": "11234567",
+    "confirmPassword": "1234567#$%^&*()7890"
+  },
+  {
+    "email": "tes@#$%^&*()",
+    "password": "aaa",
+    "confirmPassword": "aaaaaaa"
+  },
+  {
+    "email": "test44@testcom",
+    "password": "11234567",
+    "confirmPassword": "1234567#$%^&*()7890"
+  },
+  {
+    "email": "fgjkl$%^&*()",
+    "password": "",
+    "confirmPassword": "aaaa"
+  },
+  {
+    "email": "test@@@test",
+    "password": "12345",
+    "confirmPassword": "12345678901234567890"
+  },
+  {
+    "email": "test@@@@@@@@test.com",
+    "password": "12345",
+    "confirmPassword": "12345777"
   }
 ]
